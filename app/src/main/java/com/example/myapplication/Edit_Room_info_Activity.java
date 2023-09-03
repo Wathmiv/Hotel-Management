@@ -40,6 +40,7 @@ public class Edit_Room_info_Activity extends AppCompatActivity {
         offersEditText = findViewById(R.id.offers);
         updateBtn = findViewById(R.id.updateBtn);
 
+        // Get the room object from the intent
         room = (Room) getIntent().getSerializableExtra("room");
 
         titleEditText.setText(room.getTitle());
