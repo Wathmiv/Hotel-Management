@@ -1,5 +1,6 @@
 package com.example.myapplication.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,8 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.example.myapplication.Adapters.RoomAdapter;
+import com.example.myapplication.Edit_Room_info_Activity;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Room;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -22,6 +25,7 @@ import java.util.ArrayList;
 public class Room_fragment extends Fragment {
 
     RecyclerView recyclerView;
+    ImageButton addRoomBtn;
     ArrayList<Room> roomsList;
     RoomAdapter roomAdapter;
     FirebaseFirestore db;
@@ -53,6 +57,13 @@ public class Room_fragment extends Fragment {
             }
         });
 
+        addRoomBtn = roomView.findViewById(R.id.addRoomBtn);
+
+        addRoomBtn.setOnClickListener(v -> {
+            // Open the add room activity
+            Intent intent = new Intent(getActivity(), Edit_Room_info_Activity.class);
+            startActivity(intent);
+        });
         return roomView;
 
     }

@@ -1,11 +1,11 @@
 package com.example.myapplication;
 
+
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,7 +17,6 @@ public class Room_info_Activity extends AppCompatActivity {
 
     TextView titleEditText, descriptionEditText, pricePerNightEditText, numBathsEditText, numBedsEditText,
             maxGuestsEditText, isACEditText, statusEditText, offersEditText;
-    String title, description, pricePerNight, numBaths, numBeds, maxGuests, isAC, status, finalOffers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,5 +60,17 @@ public class Room_info_Activity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                // Handle the back button event
+                Intent intent = new Intent(Room_info_Activity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        };
+        this.getOnBackPressedDispatcher().addCallback(this, callback);
     }
+
+
+
 }
