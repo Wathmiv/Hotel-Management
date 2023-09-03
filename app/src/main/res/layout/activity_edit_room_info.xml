@@ -11,7 +11,8 @@
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
 
         <ImageButton
             android:id="@+id/imageButton"
@@ -19,7 +20,18 @@
             android:layout_height="53dp"
             android:background="@color/white"
             app:srcCompat="@drawable/go_back_icon"
-            android:layout_margin="10dp"/>
+            />
+
+        <TextView
+            android:id="@+id/addOrEdit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add a Room"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"
+            />
 
     </LinearLayout>
 
@@ -55,7 +67,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="Name"
+                    android:text=""
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -78,7 +90,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="Name"
+                    android:text=""
                     android:textSize="20sp" />
 
             </LinearLayout>
@@ -102,7 +114,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="Name"
+                    android:text=""
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -125,7 +137,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="Name"
+                    android:text=""
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -148,7 +160,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="Name"
+                    android:text=""
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -171,7 +183,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="Name"
+                    android:text=""
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -194,7 +206,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="Name"
+                    android:text=""
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -217,7 +229,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="text"
-                    android:text="Name"
+                    android:text=""
                     android:textSize="20sp" />
             </LinearLayout>
 
@@ -230,7 +242,7 @@
                 android:layout_margin="15dp"
                 android:background="@color/colorLightAccent"
                 android:textColor="@color/white"
-                android:text="Update" />
+                android:text="Add" />
 
 
         </LinearLayout>
