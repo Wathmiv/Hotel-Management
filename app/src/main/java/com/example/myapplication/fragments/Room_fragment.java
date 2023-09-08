@@ -40,7 +40,7 @@ public class Room_fragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         db = FirebaseFirestore.getInstance();
-        roomsList = new ArrayList<Room>();
+        roomsList = new ArrayList<>();
         roomAdapter = new RoomAdapter(getActivity(), roomsList);
         recyclerView.setAdapter(roomAdapter);
 
@@ -52,7 +52,6 @@ public class Room_fragment extends Fragment {
                     room.setDocumentId(document.getId());
                     roomsList.add(room);
                 }
-
                 roomAdapter.notifyDataSetChanged();
             }
         });
