@@ -54,11 +54,11 @@ public class Room implements Serializable {
         this.title = title;
     }
 
-    public boolean isAC() {
+    public boolean getIsAC() {
         return isAC;
     }
 
-    public void setAC(boolean AC) {
+    public void setIsAC(boolean AC) {
         isAC = AC;
     }
 

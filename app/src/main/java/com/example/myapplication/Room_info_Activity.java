@@ -43,7 +43,7 @@ public class Room_info_Activity extends AppCompatActivity {
         numBathsEditText.setText(String.valueOf(room.getNumBaths()));
         numBedsEditText.setText(String.valueOf(room.getNumBeds()));
         maxGuestsEditText.setText(String.valueOf(room.getMaxGuests()));
-        isACEditText.setText(String.valueOf(room.isAC()));
+        isACEditText.setText(String.valueOf(room.getIsAC()));
         statusEditText.setText(room.getStatus());
         offersEditText.setText(room.OffersToString());
 
