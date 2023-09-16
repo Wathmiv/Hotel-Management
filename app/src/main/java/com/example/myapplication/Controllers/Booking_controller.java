@@ -1,12 +1,11 @@
 package com.example.myapplication.Controllers;
 
-import android.widget.Toast;
-
-import com.example.myapplication.Booking_info_Activity;
 import com.example.myapplication.models.Booking;
 import com.example.myapplication.models.Room;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import kotlin.Pair;
@@ -15,43 +14,47 @@ public class Booking_controller {
 
     ArrayList<Booking> bookingsList;
 
-    public Booking_controller( ArrayList<Booking> bookingsList) {
+    public Booking_controller(ArrayList<Booking> bookingsList) {
         this.bookingsList = bookingsList;
     }
 
-    public ArrayList<Booking> bookingsOn(LocalDate date){
-        // Returns a list of bookings on a given date
-        try {
-            ArrayList<Booking> bookingsOnDate = new ArrayList<>();
-            for(Booking booking : bookingsList){
-                if(booking.getBookedDates().contains(date)){
+    public ArrayList<Booking> bookingsOn(ArrayList<LocalDate> date) {
+        // Returns a list of bookings on a given list of dates
+        ArrayList<Booking> bookingsOnDate = new ArrayList<>();
+        for (LocalDate d : date) {
+            for (Booking booking : bookingsList) {
+                if (booking.getBookedDates().contains(d)) {
                     bookingsOnDate.add(booking);
                 }
             }
-            return bookingsOnDate;
         }
-        catch (Exception e){
-            Toast.makeText(null, "Error in bookingsOn", Toast.LENGTH_SHORT).show();
-            return null;
-        }
+        return bookingsOnDate;
     }
 
-    public Pair<Boolean, Booking> isRoomBookedOn(LocalDate date, Room room) {
-        // Returns true if a room is booked on a given date
-        try {
-            ArrayList<Booking> bookingsOnDate = bookingsOn(date);
-            for (Booking booking : bookingsOnDate) {
-                if (booking.getRoomTitle().equals(room.getTitle())) {
-                    return new Pair<>(true, booking);
-                }
+    public ArrayList<Booking> isRoomBookedOn(ArrayList<LocalDate> date, Room room) {
+        // Returns true if a room is booked on a given list of dates
+        ArrayList<Booking> bookingsOnDate = bookingsOn(date);
+        ArrayList<Booking> bookingsOnRoom = new ArrayList<>();
+        for (Booking booking : bookingsOnDate) {
+            if (booking.getRoomTitle().equals(room.getTitle())) {
+                bookingsOnRoom.add(booking);
             }
-            return new Pair<>(false, null);
-
         }
-        catch (Exception e){
-            Toast.makeText(null, "Error in isRoomBookedOn", Toast.LENGTH_SHORT).show();
-            return null;
-        }
+        return bookingsOnRoom;
+    }
 
+    // Helper method to convert LocalDateTime list to LocalDate list
+    private ArrayList<LocalDate> convertLocalDateTimeToLocalDate(ArrayList<LocalDateTime> dateTimeList) {
+        ArrayList<LocalDate> dateList = new ArrayList<>();
+        for (LocalDateTime dateTime : dateTimeList) {
+            dateList.add(dateTime.toLocalDate());
+        }
+        return dateList;
+    }
+
+    // Format LocalDateTime to a string
+    private String getFormattedDateTime(LocalDateTime dateTime) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return dateTime.format(formatter);
     }
 }

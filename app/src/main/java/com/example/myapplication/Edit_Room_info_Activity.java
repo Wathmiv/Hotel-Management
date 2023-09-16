@@ -60,7 +60,7 @@ public class Edit_Room_info_Activity extends AppCompatActivity {
             numBathsEditText.setText(String.valueOf(room.getNumBaths()));
             numBedsEditText.setText(String.valueOf(room.getNumBeds()));
             maxGuestsEditText.setText(String.valueOf(room.getMaxGuests()));
-            isACEditText.setText(String.valueOf(room.isAC()));
+            isACEditText.setText(String.valueOf(room.getIsAC()));
             offersEditText.setText(room.OffersToString());
             updateBtn.setOnClickListener((v) -> UpdateRoomInfo());
         }
@@ -128,7 +128,7 @@ public class Edit_Room_info_Activity extends AppCompatActivity {
             room.setNumBaths(Integer.parseInt(numBathsEditText.getText().toString()));
             room.setNumBeds(Integer.parseInt(numBedsEditText.getText().toString()));
             room.setMaxGuests(Integer.parseInt(maxGuestsEditText.getText().toString()));
-            room.setAC(Boolean.parseBoolean(isACEditText.getText().toString()));
+            room.setIsAC((Boolean.parseBoolean(isACEditText.getText().toString())));
             String offersInput = offersEditText.getText().toString();
             String[] offerArray = offersInput.split(","); // Split the input string by commas
 

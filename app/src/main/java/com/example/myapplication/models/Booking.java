@@ -3,6 +3,7 @@ package com.example.myapplication.models;
 import static java.time.format.DateTimeFormatter.ofPattern;
 
 import java.io.Serializable;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
@@ -14,20 +15,21 @@ public class Booking implements Serializable {
 
     String documentId, roomTitle, bookingStartDate, bookingEndDate;
     Map<String,String> bookedBy;
-    Integer numberOfGuests;
+    Integer numberOfGuests,roomNum;
     long price;
 
     public Booking() {
     }
 
     public Booking( String roomTitle, String bookingStartDate,
-                   String bookingEndDate, Integer numberOfGuests, long price, Map<String, String> bookedBy) {
+                    String bookingEndDate, Integer numberOfGuests, long price, Map<String, String> bookedBy, Integer roomNum) {
         this.roomTitle = roomTitle;
         this.bookingStartDate = bookingStartDate;
         this.bookingEndDate = bookingEndDate;
         this.numberOfGuests = numberOfGuests;
         this.price = price;
         this.bookedBy = bookedBy;
+        this.roomNum = roomNum;
     }
 
     public String getDocumentId() {
@@ -85,11 +87,26 @@ public class Booking implements Serializable {
     public void setBookedBy(Map<String, String> bookedBy) {
         this.bookedBy = bookedBy;
     }
+
+    public Integer getRoomNum() {
+        return roomNum;
+    }
+
+    public void setRoomNum(Integer roomNum) {
+        this.roomNum = roomNum;
+    }
     public ArrayList<LocalDate> getBookedDates() {
-        // Convert the booking start and end dates to LocalDate objects
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, MMM d, yyyy, h:mm:ss a", Locale.ENGLISH);
-        LocalDate startDate = LocalDate.parse(bookingStartDate, formatter);
-        LocalDate endDate = LocalDate.parse(bookingEndDate, formatter);
+
+        String[] startParts = bookingStartDate.split(" GMT");
+        String[] endParts = bookingEndDate.split(" GMT");
+
+        // Define a custom DateTimeFormatter for the date and time part
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, MMM d, yyyy, hh:mm:ss a", Locale.ENGLISH);
+
+        // Parse the date and time parts into ZonedDateTime objects
+       LocalDate startDate = LocalDate.parse(startParts[0], formatter);
+         LocalDate endDate = LocalDate.parse(endParts[0], formatter);
+
         // Create an ArrayList of LocalDate objects representing the dates between the start and end dates,
         ArrayList<LocalDate> bookedDates = new ArrayList<>();
         while (!startDate.isAfter(endDate.minusDays(1))) {

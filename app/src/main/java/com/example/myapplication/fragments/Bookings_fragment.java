@@ -1,7 +1,7 @@
 package com.example.myapplication.fragments;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,9 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.myapplication.Adapters.BookingAdapter;
+import com.example.myapplication.Adapters.BookingAdapter_for_booking_fragment;
+import com.example.myapplication.Add_Booking_Activity;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Booking;
 import com.example.myapplication.models.Room;
@@ -23,20 +26,21 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
-
 public class Bookings_fragment extends Fragment {
 
     Button button2;
+    LinearLayout addBooking;
     RecyclerView recyclerView;
     ArrayList<Room> roomsList;
     ArrayList<Booking> bookingsList;
-    BookingAdapter bookingAdapter;
-    LocalDate date;
+    BookingAdapter_for_booking_fragment bookingAdapter;
+    LocalDate date; // Updated to use LocalDateTime
     FirebaseFirestore db;
 
     @Override
@@ -45,6 +49,7 @@ public class Bookings_fragment extends Fragment {
         // Inflate the layout for this fragment
         View bookingsView = inflater.inflate(R.layout.fragment_bookings, container, false);
 
+        addBooking = bookingsView.findViewById(R.id.addBooking);
         button2 = bookingsView.findViewById(R.id.button2);
         recyclerView = bookingsView.findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -56,14 +61,18 @@ public class Bookings_fragment extends Fragment {
         roomsList = new ArrayList<Room>();
         date = convertBtnTextToDate(button2.getText().toString());
 
-
         datePickerFunc();
 
-        bookingAdapter = new BookingAdapter(getActivity(), bookingsList, roomsList, date);
+        bookingAdapter = new BookingAdapter_for_booking_fragment(getActivity(), bookingsList, roomsList, date);
         recyclerView.setAdapter(bookingAdapter);
 
+        addBooking.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), Add_Booking_Activity.class);
+            startActivity(intent);
+        });
+
         db.collection("rooms").get().addOnCompleteListener(task -> {
-            if(task.isSuccessful()) {
+            if (task.isSuccessful()) {
                 roomsList.clear();
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     Room room = document.toObject(Room.class);
@@ -71,44 +80,43 @@ public class Bookings_fragment extends Fragment {
                     roomsList.add(room);
                 }
                 bookingAdapter.notifyDataSetChanged();
-            }
-            else {
+            } else {
                 Toast.makeText(getActivity(), "Error in getting rooms", Toast.LENGTH_SHORT).show();
             }
         });
         db.collection("bookings").get().addOnCompleteListener(task -> {
-            if(task.isSuccessful()) {
+            if (task.isSuccessful()) {
                 bookingsList.clear();
                 for (QueryDocumentSnapshot document : task.getResult()) {
                     Booking booking = document.toObject(Booking.class);
                     bookingsList.add(booking);
                 }
                 bookingAdapter.notifyDataSetChanged();
-            }
-            else {
+            } else {
                 Toast.makeText(getActivity(), "Error in getting bookings", Toast.LENGTH_SHORT).show();
             }
         });
-
 
         return bookingsView;
     }
 
     public LocalDate convertBtnTextToDate(String btnText) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy", Locale.ENGLISH);
-        LocalDate date = LocalDate.parse(btnText, formatter);
-        return date;
+        LocalDate localDate = LocalDate.parse(btnText, formatter);
+        // Set time to midnight (00:00:00)
+        return localDate;
     }
 
     public String getTodayDate() {
-        LocalDate date = LocalDate.now();
+        LocalDate dateTime = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy", Locale.ENGLISH);
-        String formattedDate = date.format(formatter);
+        String formattedDate = dateTime.format(formatter);
         return formattedDate;
     }
 
     public void datePickerFunc() {
-        try {Calendar cal = Calendar.getInstance();
+        try {
+            Calendar cal = Calendar.getInstance();
             int year = cal.get(Calendar.YEAR);
             int month = cal.get(Calendar.MONTH);
             int day = cal.get(Calendar.DAY_OF_MONTH);
@@ -119,24 +127,19 @@ public class Bookings_fragment extends Fragment {
                     DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
                         @Override
                         public void onDateSet(DatePicker datePicker, int year, int month, int dayOfMonth) {
-
                             month = month + 1;
                             String date1 = makeDateString(dayOfMonth, month, year);
                             button2.setText(date1);
-                            date = LocalDate.of(year, month, dayOfMonth);
+                            date = LocalDate.of(year, month, dayOfMonth); // Updated to use LocalDateTime
                             bookingAdapter.updateDate(date);
                         }
-                    }, year, month,day);
+                    }, year, month, day);
                     datePickerDialog.show();
-
                 }
             });
-
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Toast.makeText(getActivity(), "Error in datePicker", Toast.LENGTH_SHORT).show();
         }
-
     }
 
     private String makeDateString(int day, int month, int year) {
