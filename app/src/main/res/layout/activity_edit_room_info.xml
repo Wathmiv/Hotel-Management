@@ -5,33 +5,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Edit_Room_info_Activity">
+    tools:context=".Edit_Room_info_Activity"
+    android:background="@drawable/background"
+    >
 
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+
         android:orientation="horizontal"
-        android:layout_margin="10dp">
+        android:background="@color/white">
 
         <ImageButton
             android:id="@+id/imageButton"
             android:layout_width="70dp"
             android:layout_height="53dp"
-            android:background="@color/white"
-            app:srcCompat="@drawable/go_back_icon"
-            />
+            android:backgroundTint="@color/white"
+            app:srcCompat="@drawable/go_back_icon" />
 
         <TextView
             android:id="@+id/addOrEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Add a Room"
-            android:textSize="26sp"
-            android:textStyle="bold"
             android:layout_marginTop="10dp"
+            android:text="Add a Room"
             android:textColor="@color/black"
-            />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -40,13 +41,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp">
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="40dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left|start"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -58,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:text="Title : "
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -68,7 +72,7 @@
                     android:ems="10"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -81,7 +85,7 @@
                     android:layout_height="wrap_content"
                     android:text="Beds : "
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -91,7 +95,7 @@
                     android:ems="10"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
 
             </LinearLayout>
 
@@ -105,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:text="Baths : "
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -115,7 +119,7 @@
                     android:ems="10"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -128,7 +132,7 @@
                     android:layout_height="wrap_content"
                     android:text="Maximum Guests : "
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -138,7 +142,7 @@
                     android:ems="10"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -151,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:text="AC / Non-AC : "
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -161,7 +165,7 @@
                     android:ems="10"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -174,7 +178,7 @@
                     android:layout_height="wrap_content"
                     android:text="Price per Night "
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -184,7 +188,7 @@
                     android:ems="10"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -197,7 +201,7 @@
                     android:layout_height="wrap_content"
                     android:text="Description : "
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -207,7 +211,7 @@
                     android:ems="10"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <LinearLayout
@@ -220,7 +224,7 @@
                     android:layout_height="wrap_content"
                     android:text="Offers : "
                     android:textAlignment="center"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <EditText
@@ -230,7 +234,7 @@
                     android:ems="10"
                     android:inputType="text"
                     android:text=""
-                    android:textSize="20sp" />
+                    android:textSize="18sp" />
             </LinearLayout>
 
             <Button
@@ -238,9 +242,10 @@
                 android:layout_width="110dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:layout_margin="15dp"
-                android:background="@color/colorLightAccent"
+                android:backgroundTint="@color/colorLightAccent"
+                android:background="@drawable/rounded_rectangle"
                 android:textColor="@color/white"
                 android:text="Add" />
 

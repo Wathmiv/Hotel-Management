@@ -25,22 +25,22 @@ public class Booking_controller {
             for (Booking booking : bookingsList) {
                 if (booking.getBookedDates().contains(d)) {
                     bookingsOnDate.add(booking);
-                    break;
                 }
             }
         }
         return bookingsOnDate;
     }
 
-    public Pair<Boolean, Booking> isRoomBookedOn(ArrayList<LocalDate> date, Room room) {
+    public ArrayList<Booking> isRoomBookedOn(ArrayList<LocalDate> date, Room room) {
         // Returns true if a room is booked on a given list of dates
         ArrayList<Booking> bookingsOnDate = bookingsOn(date);
+        ArrayList<Booking> bookingsOnRoom = new ArrayList<>();
         for (Booking booking : bookingsOnDate) {
             if (booking.getRoomTitle().equals(room.getTitle())) {
-                return new Pair<>(true, booking);
+                bookingsOnRoom.add(booking);
             }
         }
-        return new Pair<>(false, null);
+        return bookingsOnRoom;
     }
 
     // Helper method to convert LocalDateTime list to LocalDate list

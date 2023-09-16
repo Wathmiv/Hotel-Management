@@ -8,7 +8,7 @@ public class Room implements Serializable {
 
     boolean isAC;
     private long pricePerNight;
-    private int maxGuests,numBaths,numBeds;
+    private int maxGuests,numBaths,numBeds,numRooms;
 
     ArrayList<String> offers;
 
@@ -17,7 +17,7 @@ public class Room implements Serializable {
     public Room() {
     }
 
-    public Room( String title, String status, String description, long pricePerNight, int numBaths, int numBeds, int maxGuests, boolean isAC, ArrayList<String> offers) {
+    public Room( String title, String status, String description, long pricePerNight, int numBaths, int numBeds, int maxGuests, boolean isAC, ArrayList<String> offers, int numRooms) {
         this.title = title;
         this.isAC = isAC;
         this.maxGuests = maxGuests;
@@ -27,6 +27,7 @@ public class Room implements Serializable {
         this.description = description;
         this.pricePerNight = pricePerNight;
         this.numBaths = numBaths;
+        this.numRooms = numRooms;
 
     }
 
@@ -108,6 +109,12 @@ public class Room implements Serializable {
 
     public void setDocumentId(String documentId) {
         this.documentId = documentId;
+    }
+    public int getNumRooms() {
+        return numRooms;
+    }
+    public void setNumRooms(int numRooms) {
+        this.numRooms = numRooms;
     }
 
     public String OffersToString() {

@@ -40,9 +40,10 @@ public class BookingAdapter_for_add_booking extends BookingAdapter {
         holder.room_title.setText(room.getTitle());
 
         daysBetween(startDate, endDate);
-        Pair<Boolean, Booking> pair = booking_controller.isRoomBookedOn(date, room);
+        ArrayList<Booking> bookingsOnRoom = booking_controller.isRoomBookedOn(date, room);
 
-        if (pair.getFirst()) {
+
+        if (!bookingsOnRoom.isEmpty()) {
             holder.room_status.setText("Booked");
         } else {
             holder.room_status.setText("Available");
@@ -51,7 +52,7 @@ public class BookingAdapter_for_add_booking extends BookingAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, Reserve_Room_Activity.class);
-                intent.putExtra("booking", pair.getSecond());
+                intent.putExtra("booking", bookingsOnRoom);
                 intent.putExtra("room", room);
 
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, MMM d, yyyy, h:mm:ss a", Locale.ENGLISH);

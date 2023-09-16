@@ -2,16 +2,19 @@ package com.example.myapplication.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
 
+import com.example.myapplication.Booked_Rooms_Activity;
 import com.example.myapplication.Booking_info_Activity;
 import com.example.myapplication.Controllers.Booking_controller;
 import com.example.myapplication.Not_Booked_Activity;
 import com.example.myapplication.models.Booking;
 import com.example.myapplication.models.Room;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;  // Import LocalDateTime
 import java.util.ArrayList;
@@ -36,21 +39,24 @@ public class BookingAdapter_for_booking_fragment extends BookingAdapter {
         ArrayList<LocalDate> dateList = new ArrayList<>();
         dateList.add(date);
 
-        Pair<Boolean, Booking> pair = booking_controller.isRoomBookedOn(dateList, room);
-
-        if (pair.getFirst()) {
-            holder.room_status.setText("Booked");
+        ArrayList<Booking> bookingsOnRoom = booking_controller.isRoomBookedOn(dateList, room);
+        if (!bookingsOnRoom.isEmpty()) {
+            if (bookingsOnRoom.size() == room.getNumRooms()) {
+                holder.room_status.setText("All Rooms are booked");
+            } else {
+                holder.room_status.setText(("Booked rooms : "+String.valueOf(bookingsOnRoom.size())));
+            }
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, Booking_info_Activity.class);
-                    intent.putExtra("booking", pair.getSecond());
+                    Intent intent = new Intent(context, Booked_Rooms_Activity.class);
                     intent.putExtra("room", room);
+                    intent.putExtra("date", date);
                     context.startActivity(intent);
                 }
             });
         } else {
-            holder.room_status.setText("Available");
+            holder.room_status.setText("All rooms are Available");
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -61,4 +67,10 @@ public class BookingAdapter_for_booking_fragment extends BookingAdapter {
             });
         }
     }
+
+    public void updateDate(LocalDate date) {
+        this.date = date;
+        notifyDataSetChanged();
+    }
 }
+

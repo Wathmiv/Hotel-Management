@@ -44,8 +44,10 @@ public class Booking_info_Activity extends AppCompatActivity {
         room_title.setText(booking.getRoomTitle());
         displayName.setText(booking.getBookedBy().get("displayName").toString());
         numberOfGuests.setText(String.valueOf(booking.getNumberOfGuests()));
-        bookingStartDate.setText(String.valueOf(booking.getBookingStartDate()));
-        bookingEndDate.setText(String.valueOf(booking.getBookingEndDate()));
+        String[] startDateTime = booking.getBookingStartDate().split(" GMT");
+        bookingStartDate.setText(startDateTime[0]);
+        String[] endDateTime = booking.getBookingEndDate().split(" GMT");
+        bookingEndDate.setText(endDateTime[0]);
         total_nights.setText(String.valueOf(booking.getTotalNights()));
         price.setText(String.valueOf(booking.getPrice()));
 

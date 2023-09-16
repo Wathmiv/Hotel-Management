@@ -19,7 +19,7 @@
             android:id="@+id/room_title"
             android:text="Room 1"
             android:textAlignment="center"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
 

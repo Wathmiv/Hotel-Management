@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import com.example.myapplication.Adapters.RoomAdapter;
 import com.example.myapplication.Edit_Room_info_Activity;
@@ -25,10 +25,10 @@ import java.util.ArrayList;
 public class Room_fragment extends Fragment {
 
     RecyclerView recyclerView;
-    ImageButton addRoomBtn;
     ArrayList<Room> roomsList;
     RoomAdapter roomAdapter;
     FirebaseFirestore db;
+    LinearLayout addRoom;
 
 
     @Override
@@ -56,9 +56,9 @@ public class Room_fragment extends Fragment {
             }
         });
 
-        addRoomBtn = roomView.findViewById(R.id.addRoomBtn);
+        addRoom = roomView.findViewById(R.id.addRoom);
 
-        addRoomBtn.setOnClickListener(v -> {
+        addRoom.setOnClickListener(v -> {
             // Open the add room activity
             Intent intent = new Intent(getActivity(), Edit_Room_info_Activity.class);
             startActivity(intent);

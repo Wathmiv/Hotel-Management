@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Add_Booking_Activity">
+    tools:context=".Add_Booking_Activity"
+    android:background="@drawable/background">
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -12,6 +13,32 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal"
+            android:background="@color/white">
+
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                app:srcCompat="@drawable/go_back_icon" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="265dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Add a Booking"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -22,11 +49,12 @@
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="100dp"
+                android:layout_width="95dp"
                 android:layout_height="wrap_content"
                 android:text="Check-in"
                 android:textSize="18sp"
                 android:layout_marginRight="10dp"
+                android:textStyle="bold"
                 />
 
             <Button
@@ -36,7 +64,9 @@
                 android:padding="5dp"
                 android:text="JAN 01 2023"
                 android:textSize="15sp"
-                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:background="@drawable/rounded_corner"
+
                 />
 
     </LinearLayout>
@@ -50,11 +80,12 @@
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="100dp"
+            android:layout_width="95dp"
             android:layout_height="wrap_content"
             android:text="Check-out"
             android:textSize="18sp"
             android:layout_marginRight="10dp"
+            android:textStyle="bold"
             />
 
         <Button
@@ -63,7 +94,9 @@
             android:layout_height="48dp"
             android:text="JAN 01 2023"
             android:textSize="15sp"
-            android:background="@color/white"/>
+            android:backgroundTint="@color/white"
+            android:background="@drawable/rounded_corner"
+            />
 
     </LinearLayout>
     </LinearLayout>
@@ -83,7 +116,8 @@
             android:text="Search"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
-            android:background="@color/colorLightAccent"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/colorPrimaryAccent"
             android:textColor="@color/white"
             />
 

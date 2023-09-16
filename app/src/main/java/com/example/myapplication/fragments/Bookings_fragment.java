@@ -1,6 +1,7 @@
 package com.example.myapplication.fragments;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,10 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.myapplication.Adapters.BookingAdapter;
 import com.example.myapplication.Adapters.BookingAdapter_for_booking_fragment;
+import com.example.myapplication.Add_Booking_Activity;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Booking;
 import com.example.myapplication.models.Room;
@@ -32,10 +35,11 @@ import java.util.Locale;
 public class Bookings_fragment extends Fragment {
 
     Button button2;
+    LinearLayout addBooking;
     RecyclerView recyclerView;
     ArrayList<Room> roomsList;
     ArrayList<Booking> bookingsList;
-    BookingAdapter bookingAdapter;
+    BookingAdapter_for_booking_fragment bookingAdapter;
     LocalDate date; // Updated to use LocalDateTime
     FirebaseFirestore db;
 
@@ -45,6 +49,7 @@ public class Bookings_fragment extends Fragment {
         // Inflate the layout for this fragment
         View bookingsView = inflater.inflate(R.layout.fragment_bookings, container, false);
 
+        addBooking = bookingsView.findViewById(R.id.addBooking);
         button2 = bookingsView.findViewById(R.id.button2);
         recyclerView = bookingsView.findViewById(R.id.recycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -60,6 +65,11 @@ public class Bookings_fragment extends Fragment {
 
         bookingAdapter = new BookingAdapter_for_booking_fragment(getActivity(), bookingsList, roomsList, date);
         recyclerView.setAdapter(bookingAdapter);
+
+        addBooking.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), Add_Booking_Activity.class);
+            startActivity(intent);
+        });
 
         db.collection("rooms").get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
@@ -98,7 +108,7 @@ public class Bookings_fragment extends Fragment {
     }
 
     public String getTodayDate() {
-        LocalDateTime dateTime = LocalDateTime.now();
+        LocalDate dateTime = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM dd yyyy", Locale.ENGLISH);
         String formattedDate = dateTime.format(formatter);
         return formattedDate;
@@ -121,7 +131,7 @@ public class Bookings_fragment extends Fragment {
                             String date1 = makeDateString(dayOfMonth, month, year);
                             button2.setText(date1);
                             date = LocalDate.of(year, month, dayOfMonth); // Updated to use LocalDateTime
-                            bookingAdapter.notifyDataSetChanged();
+                            bookingAdapter.updateDate(date);
                         }
                     }, year, month, day);
                     datePickerDialog.show();

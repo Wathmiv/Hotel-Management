@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Room_info_Activity">
+    tools:context=".Room_info_Activity"
+    android:background="@drawable/background">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,15 +13,16 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="76dp"
-            android:orientation="horizontal">
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:background="@color/white">
 
 
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                android:layout_margin="15dp"
                 app:srcCompat="@drawable/go_back_icon" />
 
             <TextView
@@ -30,15 +32,14 @@
                 android:layout_margin="10dp"
                 android:text="Room"
                 android:textColor="@color/black"
-                android:textSize="30dp"
+                android:textSize="24dp"
                 android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/imageView5"
-                android:layout_width="118dp"
-                android:layout_height="45dp"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
                 android:layout_margin="10dp"
-                android:layout_weight="1"
                 android:padding="5dp"
                 android:adjustViewBounds="true"
                 android:background="@color/colorPrimaryAccent"
@@ -52,7 +53,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView2"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp">
 
@@ -64,30 +65,7 @@
             android:gravity="left"
             android:layout_gravity="center">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Status : "
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/status"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Booked"
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

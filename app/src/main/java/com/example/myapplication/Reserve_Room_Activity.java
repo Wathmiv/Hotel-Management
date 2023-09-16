@@ -13,11 +13,12 @@ import com.example.myapplication.models.Booking;
 import com.example.myapplication.models.Room;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Reserve_Room_Activity extends AppCompatActivity {
-    private Booking bookingFromIntent;
+    private ArrayList<Booking> bookingFromIntent;
     private Booking booking;
     private String checkInDateTime, checkOutDateTime;
     private Room room;
@@ -47,7 +48,7 @@ public class Reserve_Room_Activity extends AppCompatActivity {
         reserveBtn = findViewById(R.id.button4);
 
         room = (Room) getIntent().getSerializableExtra("room");
-        bookingFromIntent = (Booking) getIntent().getSerializableExtra("booking");
+        bookingFromIntent = (ArrayList<Booking>) getIntent().getSerializableExtra("booking");
         checkInDateTime = getIntent().getStringExtra("checkInDateTime");
         checkOutDateTime = getIntent().getStringExtra("checkOutDateTime");
 
@@ -62,7 +63,7 @@ public class Reserve_Room_Activity extends AppCompatActivity {
         numBedsEditText.setText(String.valueOf(room.getNumBeds()));
         maxGuestsEditText.setText(String.valueOf(room.getMaxGuests()));
         isACEditText.setText(String.valueOf(room.getIsAC()));
-        if (bookingFromIntent != null) {
+        if (!bookingFromIntent.isEmpty()) {
             statusEditText.setText("Booked");
         } else {
             statusEditText.setText("Available");

@@ -24,7 +24,7 @@
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="65dp"
-                android:layout_height="78dp"
+                android:layout_height="50dp"
                 app:srcCompat="@drawable/logo" />
 
         </GridLayout>
