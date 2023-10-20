@@ -53,5 +53,6 @@ public class Add_Task_Dialogue extends DialogFragment {
         task.setTaskName(taskTitle.getText().toString());
         task.setAssignedTo(assignedTo.getText().toString());
         task.setDescription(description.getText().toString());
+        task.setStatus("Not completed");
     }
 }

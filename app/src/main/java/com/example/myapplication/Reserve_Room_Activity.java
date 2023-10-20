@@ -10,17 +10,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapplication.models.Booking;
+import com.example.myapplication.models.Booking2;
 import com.example.myapplication.models.Room;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Reserve_Room_Activity extends AppCompatActivity {
-    private ArrayList<Booking> bookingFromIntent;
-    private Booking booking;
-    private String checkInDateTime, checkOutDateTime;
+    private Booking bookingFromIntent;
+    private Booking2 booking;
+    private LocalDateTime checkInDateTime, checkOutDateTime;
+    private Date start, end;
     private Room room;
     ImageView goBackImageView;
     private Button reserveBtn;
@@ -48,9 +56,17 @@ public class Reserve_Room_Activity extends AppCompatActivity {
         reserveBtn = findViewById(R.id.button4);
 
         room = (Room) getIntent().getSerializableExtra("room");
-        bookingFromIntent = (ArrayList<Booking>) getIntent().getSerializableExtra("booking");
-        checkInDateTime = getIntent().getStringExtra("checkInDateTime");
-        checkOutDateTime = getIntent().getStringExtra("checkOutDateTime");
+        bookingFromIntent = (Booking) getIntent().getSerializableExtra("booking");
+        checkInDateTime = (LocalDateTime) getIntent().getSerializableExtra("checkInDateTime");
+        checkOutDateTime = (LocalDateTime) getIntent().getSerializableExtra("checkOutDateTime");
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+
+        //start =  (Date) checkOutDateTime;
+        ZoneId zoneId = ZoneId.systemDefault(); // You can change the time zone as needed
+        start = Date.from(checkOutDateTime.atZone(zoneId).toInstant());
+        end = Date.from(checkOutDateTime.atZone(zoneId).toInstant());
+        //end = new Timestamp(checkOutDateTime.toEpochSecond(ZoneOffset.UTC)*1000);
 
         bookedBy = new HashMap<>();
         bookedBy.put("displayName", "Hotel Manager");
@@ -63,7 +79,7 @@ public class Reserve_Room_Activity extends AppCompatActivity {
         numBedsEditText.setText(String.valueOf(room.getNumBeds()));
         maxGuestsEditText.setText(String.valueOf(room.getMaxGuests()));
         isACEditText.setText(String.valueOf(room.getIsAC()));
-        if (!bookingFromIntent.isEmpty()) {
+        if (bookingFromIntent != null) {
             statusEditText.setText("Booked");
         } else {
             statusEditText.setText("Available");
@@ -71,23 +87,26 @@ public class Reserve_Room_Activity extends AppCompatActivity {
         offersEditText.setText(room.OffersToString());
 
         reserveBtn.setOnClickListener(v -> {
+            setBookingInfo();
             if (bookingFromIntent == null) {
                 addBooking();
+                Toast.makeText(this, "Booking added successfully", Toast.LENGTH_SHORT).show();
             } else {
-                setBookingInfo();
-                Toast.makeText(this, booking.getBookingStartDate(), Toast.LENGTH_SHORT).show();
+                Booking_add_confirmation_dialogue dialogFragment = new Booking_add_confirmation_dialogue();
+                // Show the dialog
+                dialogFragment.show(getSupportFragmentManager(), "Booking_add_confirmation_dialogue");
             }
         });
     }
 
     public void setBookingInfo() {
-        booking = new Booking();
+        booking = new Booking2();
         booking.setRoomTitle(room.getTitle());
         booking.setBookedBy(bookedBy);
 
-        booking.setBookingStartDate(checkInDateTime);
+        booking.setBookingStartDate(new Timestamp(start.getTime()));
 
-        booking.setBookingEndDate(checkOutDateTime);
+        booking.setBookingEndDate(new Timestamp(end.getTime()));
 
         booking.setNumberOfGuests(room.getMaxGuests());
         booking.setPrice(room.getPricePerNight());
@@ -96,7 +115,6 @@ public class Reserve_Room_Activity extends AppCompatActivity {
 
     public void addBooking() {
         Toast.makeText(this, "Adding booking", Toast.LENGTH_SHORT).show();
-        setBookingInfo();
         db = FirebaseFirestore.getInstance();
         db.collection("bookings")
                 .add(booking)

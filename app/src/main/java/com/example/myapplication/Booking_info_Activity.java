@@ -14,6 +14,8 @@ import com.example.myapplication.fragments.Bookings_fragment;
 import com.example.myapplication.models.Booking;
 import com.example.myapplication.models.Room;
 
+import java.time.ZoneId;
+
 public class Booking_info_Activity extends AppCompatActivity {
 
     TextView room_title, displayName, numberOfGuests, bookingStartDate, bookingEndDate,total_nights, price ;
@@ -44,10 +46,10 @@ public class Booking_info_Activity extends AppCompatActivity {
         room_title.setText(booking.getRoomTitle());
         displayName.setText(booking.getBookedBy().get("displayName").toString());
         numberOfGuests.setText(String.valueOf(booking.getNumberOfGuests()));
-        String[] startDateTime = booking.getBookingStartDate().split(" GMT");
-        bookingStartDate.setText(startDateTime[0]);
-        String[] endDateTime = booking.getBookingEndDate().split(" GMT");
-        bookingEndDate.setText(endDateTime[0]);
+        String startDateTime = booking.getBookingStartDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString();
+        bookingStartDate.setText(startDateTime);
+        String endDateTime = booking.getBookingEndDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().toString();
+        bookingEndDate.setText(endDateTime);
         total_nights.setText(String.valueOf(booking.getTotalNights()));
         price.setText(String.valueOf(booking.getPrice()));
 
