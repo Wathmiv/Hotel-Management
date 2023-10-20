@@ -12,6 +12,7 @@ import com.example.myapplication.Reserve_Room_Activity;
 import com.example.myapplication.models.Booking;
 import com.example.myapplication.models.Room;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -52,20 +53,17 @@ public class BookingAdapter_for_add_booking extends BookingAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, Reserve_Room_Activity.class);
-                intent.putExtra("booking", bookingsOnRoom);
+                if(!bookingsOnRoom.isEmpty()) {
+                    intent.putExtra("booking", bookingsOnRoom.get(0));
+                }
                 intent.putExtra("room", room);
 
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, MMM d, yyyy, h:mm:ss a", Locale.ENGLISH);
-                LocalTime startTime = LocalTime.of(14, 0, 0);
-                LocalTime endTime = LocalTime.of(12, 0, 0);
-                //LocalDateTime startDateTime = LocalDateTime.of(startDate, startTime);
-                //LocalDateTime endDateTime = LocalDateTime.of(endDate, endTime);
-                LocalDateTime startDateTime = LocalDateTime.of(2023, 9, 12, 14, 0, 0);
-                LocalDateTime endDateTime = LocalDateTime.of(2023, 9, 13, 12, 0, 0);
-                String startDateTimeString = startDateTime.format(formatter);
-                String endDateTimeString = endDateTime.format(formatter);
-                intent.putExtra("checkInDateTime", "Mon, Sep 11, 2023, 02:00:00 PM");
-                intent.putExtra("checkOutDateTime", "Wed, Sep 13, 2023, 12:00:00 PM");
+                LocalDateTime startDateTime = LocalDateTime.of(startDate, LocalTime.of(14, 0));
+                LocalDateTime endDateTime = LocalDateTime.of(endDate, LocalTime.of(12, 0));
+
+
+                intent.putExtra("checkInDateTime", startDateTime);
+                intent.putExtra("checkOutDateTime", endDateTime);
 
                 context.startActivity(intent);
             }
@@ -79,8 +77,6 @@ public class BookingAdapter_for_add_booking extends BookingAdapter {
             this.date.add(date1);
             date1 = date1.plusDays(1);
         }
-
-
     }
 
     public void updateDates(LocalDate startDate, LocalDate endDate) {

@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.OnEmployeeClickListener;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Worker;
 
@@ -19,9 +20,17 @@ public class Staff_view_Adapter extends RecyclerView.Adapter<Staff_view_Adapter.
     Context context;
     ArrayList<Worker> workersList;
 
+    private OnEmployeeClickListener onEmployeeClickListener;
+
     public Staff_view_Adapter(Context context, ArrayList<Worker> workersList) {
         this.context = context;
         this.workersList = workersList;
+    }
+
+    public Staff_view_Adapter(Context context, ArrayList<Worker> workersList, OnEmployeeClickListener onEmployeeClickListener) {
+        this.context = context;
+        this.workersList = workersList;
+        this.onEmployeeClickListener = onEmployeeClickListener;
     }
 
     @NonNull
@@ -35,6 +44,9 @@ public class Staff_view_Adapter extends RecyclerView.Adapter<Staff_view_Adapter.
     public void onBindViewHolder(@NonNull Staff_view_Adapter.StaffViewHolder holder, int position) {
         Worker worker = workersList.get(position);
         holder.staff_name.setText(worker.getName());
+        if(onEmployeeClickListener != null) {
+
+        }
 
     }
 
@@ -48,6 +60,16 @@ public class Staff_view_Adapter extends RecyclerView.Adapter<Staff_view_Adapter.
         public StaffViewHolder(@NonNull View itemView) {
             super(itemView);
             staff_name = itemView.findViewById(R.id.staff_name);
+
+            staff_name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(onEmployeeClickListener != null){
+                        onEmployeeClickListener.onEmployeeClick(staff_name.getText().toString());
+                    }
+                }
+            });
+
         }
     }
 }

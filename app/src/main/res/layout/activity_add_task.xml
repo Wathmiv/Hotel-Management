@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Edit_Room_info_Activity"
     android:background="@drawable/background"
-    >
+    tools:context=".Add_Task_Activity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
     <LinearLayout
         android:id="@+id/linearLayout1"
@@ -29,20 +31,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Add a Room"
+            android:text="Add a Task"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
 
     </LinearLayout>
 
-
     <androidx.cardview.widget.CardView
         android:layout_below="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="40dp">
 
         <LinearLayout
@@ -50,7 +51,8 @@
             android:layout_height="wrap_content"
             android:gravity="left|start"
             android:orientation="vertical"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:layout_marginTop="8dp">
 
             <LinearLayout
@@ -79,146 +81,6 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Beds : "
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/numBeds"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:text=""
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Baths : "
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/numBaths"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:text=""
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Maximum Guests : "
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/maxGuests"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:text=""
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="No. of Rooms : "
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/numRooms"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:text=""
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="AC / Non-AC : "
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/isAC"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:text=""
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Price per Night : $"
-                    android:textAlignment="center"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/pricePerNight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:text=""
-                    android:textSize="18sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <TextView
@@ -235,8 +97,8 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="textMultiLine"
-                    android:minLines="4"
-                    android:maxLines="6"
+                    android:minLines="2"
+                    android:maxLines="4"
                     android:text=""
                     android:textSize="18sp" />
             </LinearLayout>
@@ -244,25 +106,82 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Offers : "
+                    android:text="Complete before : "
                     android:textAlignment="center"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
                 <EditText
-                    android:id="@+id/offers"
-                    android:layout_width="match_parent"
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                                       android:text=""
+                    android:inputType="text"
+                    android:text=""
                     android:textSize="18sp" />
             </LinearLayout>
 
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Select employee : "
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/editEmployee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="text"
+                    android:text="employee"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@color/white">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+
+                    <TextView
+                        android:id="@+id/task_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Employee Name"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+
+                </TableRow>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"/>
+
+            </TableLayout>
             <Button
                 android:id="@+id/updateBtn"
                 android:layout_width="110dp"
@@ -275,12 +194,10 @@
                 android:textColor="@color/white"
                 android:text="Add" />
 
-
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
+    </RelativeLayout>
 
-
-
-</RelativeLayout>
+</ScrollView>

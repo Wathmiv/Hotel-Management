@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/staff_name"
+        android:id="@+id/employeeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:text="Staff Name"
+        android:text="Employee"
+        android:layout_marginLeft="10dp"
         android:textSize="18sp"
         android:textStyle="bold" />
 

@@ -2,10 +2,11 @@ package com.example.myapplication.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Room implements Serializable {
     private String  status, description, documentId,title;
-
+    private List<String> images;
     boolean isAC;
     private long pricePerNight;
     private int maxGuests,numBaths,numBeds,numRooms;
@@ -17,7 +18,9 @@ public class Room implements Serializable {
     public Room() {
     }
 
-    public Room( String title, String status, String description, long pricePerNight, int numBaths, int numBeds, int maxGuests, boolean isAC, ArrayList<String> offers, int numRooms) {
+    public Room( String title, String status, String description, long pricePerNight, int numBaths,
+                 int numBeds, int maxGuests, boolean isAC, ArrayList<String> offers, int numRooms,
+                 List<String> images) {
         this.title = title;
         this.isAC = isAC;
         this.maxGuests = maxGuests;
@@ -28,6 +31,7 @@ public class Room implements Serializable {
         this.pricePerNight = pricePerNight;
         this.numBaths = numBaths;
         this.numRooms = numRooms;
+        this.images = images;
 
     }
 
@@ -115,6 +119,12 @@ public class Room implements Serializable {
     }
     public void setNumRooms(int numRooms) {
         this.numRooms = numRooms;
+    }
+    public List<String> getImages() {
+        return images;
+    }
+    public void setImages(List<String> images) {
+        this.images = images;
     }
 
     public String OffersToString() {

@@ -16,7 +16,7 @@ public class Room_info_Activity extends AppCompatActivity {
     ImageView editIconImageView, goBackImageView;
 
     TextView titleEditText, descriptionEditText, pricePerNightEditText, numBathsEditText, numBedsEditText,
-            maxGuestsEditText, isACEditText, offersEditText;
+            maxGuestsEditText, isACEditText, offersEditText, numRoomsTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +33,8 @@ public class Room_info_Activity extends AppCompatActivity {
         offersEditText = findViewById(R.id.offers);
         editIconImageView = findViewById(R.id.imageView5);
         goBackImageView = findViewById(R.id.imageView4);
+        numRoomsTextView = findViewById(R.id.numRooms);
+
 
         Room room = (Room) getIntent().getSerializableExtra("room");
 
@@ -44,6 +46,7 @@ public class Room_info_Activity extends AppCompatActivity {
         maxGuestsEditText.setText(String.valueOf(room.getMaxGuests()));
         isACEditText.setText(String.valueOf(room.getIsAC()));
         offersEditText.setText(room.OffersToString());
+        numRoomsTextView.setText(String.valueOf(room.getNumRooms()));
 
         editIconImageView.setOnClickListener(v -> {
             // Open the edit room info activity

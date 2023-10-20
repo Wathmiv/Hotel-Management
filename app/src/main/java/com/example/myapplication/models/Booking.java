@@ -3,17 +3,21 @@ package com.example.myapplication.models;
 import static java.time.format.DateTimeFormatter.ofPattern;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Map;
 
 public class Booking implements Serializable {
 
-    String documentId, roomTitle, bookingStartDate, bookingEndDate;
+    String documentId, roomTitle;
+    LocalDate startDate, endDate;
+    Date bookingStartDate, bookingEndDate;
     Map<String,String> bookedBy;
     Integer numberOfGuests,roomNum;
     long price;
@@ -21,10 +25,10 @@ public class Booking implements Serializable {
     public Booking() {
     }
 
-    public Booking( String roomTitle, String bookingStartDate,
-                    String bookingEndDate, Integer numberOfGuests, long price, Map<String, String> bookedBy, Integer roomNum) {
+    public Booking( String roomTitle, Date bookingStartDate,
+                    Date bookingEndDate, Integer numberOfGuests, long price, Map<String, String> bookedBy, Integer roomNum) {
         this.roomTitle = roomTitle;
-        this.bookingStartDate = bookingStartDate;
+        this.bookingStartDate =  bookingStartDate;
         this.bookingEndDate = bookingEndDate;
         this.numberOfGuests = numberOfGuests;
         this.price = price;
@@ -48,19 +52,19 @@ public class Booking implements Serializable {
         this.roomTitle = roomTitle;
     }
 
-    public String getBookingStartDate() {
+    public Date getBookingStartDate() {
         return bookingStartDate;
     }
 
-    public void setBookingStartDate(String bookingStartDate) {
+    public void setBookingStartDate(Date bookingStartDate) {
         this.bookingStartDate = bookingStartDate;
     }
 
-    public String getBookingEndDate() {
+    public Date getBookingEndDate() {
         return bookingEndDate;
     }
 
-    public void setBookingEndDate(String bookingEndDate) {
+    public void setBookingEndDate(Date bookingEndDate) {
         this.bookingEndDate = bookingEndDate;
     }
 
@@ -97,15 +101,8 @@ public class Booking implements Serializable {
     }
     public ArrayList<LocalDate> getBookedDates() {
 
-        String[] startParts = bookingStartDate.split(" GMT");
-        String[] endParts = bookingEndDate.split(" GMT");
-
-        // Define a custom DateTimeFormatter for the date and time part
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, MMM d, yyyy, hh:mm:ss a", Locale.ENGLISH);
-
-        // Parse the date and time parts into ZonedDateTime objects
-       LocalDate startDate = LocalDate.parse(startParts[0], formatter);
-         LocalDate endDate = LocalDate.parse(endParts[0], formatter);
+        startDate = bookingStartDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        endDate = bookingEndDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
         // Create an ArrayList of LocalDate objects representing the dates between the start and end dates,
         ArrayList<LocalDate> bookedDates = new ArrayList<>();
@@ -113,6 +110,7 @@ public class Booking implements Serializable {
             bookedDates.add(startDate);
             startDate = startDate.plusDays(1);
         }
+
 
         return bookedDates;
     }

@@ -23,7 +23,7 @@ public class Edit_Room_info_Activity extends AppCompatActivity {
     Button updateBtn;
     TextView addOrEditTextView;
     EditText titleEditText, descriptionEditText, pricePerNightEditText, numBathsEditText, numBedsEditText,
-            maxGuestsEditText, isACEditText,  offersEditText;
+            maxGuestsEditText, isACEditText,  offersEditText,numRoomsEditText;
     Room room;
 
     FirebaseFirestore db;
@@ -44,6 +44,7 @@ public class Edit_Room_info_Activity extends AppCompatActivity {
         offersEditText = findViewById(R.id.offers);
         updateBtn = findViewById(R.id.updateBtn);
         addOrEditTextView = findViewById(R.id.addOrEdit);
+        numRoomsEditText = findViewById(R.id.numRooms);
 
         // Get the room object from the intent
         room = (Room) getIntent().getSerializableExtra("room");
@@ -62,6 +63,7 @@ public class Edit_Room_info_Activity extends AppCompatActivity {
             maxGuestsEditText.setText(String.valueOf(room.getMaxGuests()));
             isACEditText.setText(String.valueOf(room.getIsAC()));
             offersEditText.setText(room.OffersToString());
+            numRoomsEditText.setText(String.valueOf(room.getNumRooms()));
             updateBtn.setOnClickListener((v) -> UpdateRoomInfo());
         }
         else {
@@ -129,6 +131,7 @@ public class Edit_Room_info_Activity extends AppCompatActivity {
             room.setNumBeds(Integer.parseInt(numBedsEditText.getText().toString()));
             room.setMaxGuests(Integer.parseInt(maxGuestsEditText.getText().toString()));
             room.setIsAC((Boolean.parseBoolean(isACEditText.getText().toString())));
+            room.setNumRooms(Integer.parseInt(numRoomsEditText.getText().toString()));
             String offersInput = offersEditText.getText().toString();
             String[] offerArray = offersInput.split(","); // Split the input string by commas
 

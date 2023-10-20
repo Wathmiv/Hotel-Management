@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.myapplication.Adapters.Staff_view_Adapter;
 import com.example.myapplication.models.Worker;
@@ -21,11 +22,14 @@ public class Staff_list_Activity extends AppCompatActivity {
     FirebaseFirestore db;
     String staffType;
 
+    TextView staffTypeTextView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_staff_list);
         recyclerView = findViewById(R.id.recyclerView);
+        staffTypeTextView = findViewById(R.id.staffType);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         db = FirebaseFirestore.getInstance();
@@ -34,6 +38,7 @@ public class Staff_list_Activity extends AppCompatActivity {
         recyclerView.setAdapter(staff_view_adapter);
 
         staffType = getIntent().getStringExtra("staffType");
+        staffTypeTextView.setText(staffType);
 
 
         db.collection("hotelStaff").whereEqualTo("staffType",staffType)
