@@ -8,6 +8,7 @@
     android:background="@drawable/background">
 
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -163,7 +164,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Cleanning staff"
+                        android:text="Cleaning staff"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:textAlignment="center"/>
@@ -176,7 +177,44 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="left"
+        >
+        <LinearLayout
+            android:id="@+id/addEmployee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_rectangle"
+            android:backgroundTint="@color/white"
+            android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="Add Employee"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/add_icon" />
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
 
 
 </RelativeLayout>

@@ -9,13 +9,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
+import com.example.myapplication.Add_Employee;
+import com.example.myapplication.Add_Employee_Dialogue;
 import com.example.myapplication.R;
 
 
 public class Staff_fragment extends Fragment {
 
     private CardView cardView_chef,cardView_roomAttendant, cardView_admin, cardView_cleaner;
+    private LinearLayout addEmployee;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -26,6 +30,7 @@ public class Staff_fragment extends Fragment {
         cardView_roomAttendant = staffView.findViewById(R.id.cardView2);
         cardView_admin = staffView.findViewById(R.id.cardView3);
         cardView_cleaner = staffView.findViewById(R.id.cardView4);
+        addEmployee = staffView.findViewById(R.id.addEmployee);
 
         cardView_chef.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), com.example.myapplication.Staff_list_Activity.class);
@@ -52,7 +57,10 @@ public class Staff_fragment extends Fragment {
 
     });
 
-
-        return staffView;
+        addEmployee.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), Add_Employee.class);
+            startActivity(intent);
+        });
+    return staffView;
     }
 }

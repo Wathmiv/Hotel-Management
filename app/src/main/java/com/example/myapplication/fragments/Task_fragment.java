@@ -14,7 +14,6 @@ import android.widget.LinearLayout;
 
 import com.example.myapplication.Adapters.TaskAdapter;
 import com.example.myapplication.Add_Task_Activity;
-import com.example.myapplication.Add_Task_Dialogue;
 import com.example.myapplication.R;
 import com.example.myapplication.models.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -61,9 +60,9 @@ public class Task_fragment extends Fragment {
 
         addTask.setOnClickListener(v -> {
             /*
-            Add_Task_Dialogue dialogFragment = new Add_Task_Dialogue();
+            Add_Employee_Dialogue dialogFragment = new Add_Employee_Dialogue();
             // Show the dialog
-            dialogFragment.show(getActivity().getSupportFragmentManager(), "Add_Task_Dialogue");*/
+            dialogFragment.show(getActivity().getSupportFragmentManager(), "Add_Employee_Dialogue");*/
 
             Intent intent = new Intent(getActivity(), Add_Task_Activity.class);
             startActivity(intent);
