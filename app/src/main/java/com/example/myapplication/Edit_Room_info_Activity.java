@@ -86,6 +86,7 @@ public class Edit_Room_info_Activity extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         // The document has been successfully updated
+                        Toast.makeText(Edit_Room_info_Activity.this, "Room updated successfully", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Edit_Room_info_Activity.this, Room_info_Activity.class);
                         intent.putExtra("room", room);
                         startActivity(intent);

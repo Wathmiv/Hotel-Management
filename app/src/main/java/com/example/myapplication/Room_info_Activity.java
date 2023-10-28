@@ -3,16 +3,28 @@ package com.example.myapplication;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.myapplication.Adapters.Room_Images_Adapter;
 import com.example.myapplication.models.Room;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Room_info_Activity extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+    Room_Images_Adapter roomImagesAdapter;
+    List<String> imagesList;
     ImageView editIconImageView, goBackImageView;
 
     TextView titleEditText, descriptionEditText, pricePerNightEditText, numBathsEditText, numBedsEditText,
@@ -34,7 +46,9 @@ public class Room_info_Activity extends AppCompatActivity {
         editIconImageView = findViewById(R.id.imageView5);
         goBackImageView = findViewById(R.id.imageView4);
         numRoomsTextView = findViewById(R.id.numRooms);
+        recyclerView = findViewById(R.id.recyclerView);
 
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         Room room = (Room) getIntent().getSerializableExtra("room");
 
@@ -47,6 +61,10 @@ public class Room_info_Activity extends AppCompatActivity {
         isACEditText.setText(String.valueOf(room.getIsAC()));
         offersEditText.setText(room.OffersToString());
         numRoomsTextView.setText(String.valueOf(room.getNumRooms()));
+        imagesList = room.getImages();
+
+        roomImagesAdapter = new Room_Images_Adapter(imagesList, this);
+        recyclerView.setAdapter(roomImagesAdapter);
 
         editIconImageView.setOnClickListener(v -> {
             // Open the edit room info activity

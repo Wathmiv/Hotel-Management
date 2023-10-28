@@ -44,10 +44,7 @@ public class Staff_view_Adapter extends RecyclerView.Adapter<Staff_view_Adapter.
     public void onBindViewHolder(@NonNull Staff_view_Adapter.StaffViewHolder holder, int position) {
         Worker worker = workersList.get(position);
         holder.staff_name.setText(worker.getName());
-        if(onEmployeeClickListener != null) {
-
-        }
-
+        holder.staff_id.setText(String.valueOf(worker.getId()));
     }
 
     @Override
@@ -56,10 +53,11 @@ public class Staff_view_Adapter extends RecyclerView.Adapter<Staff_view_Adapter.
     }
 
     public class StaffViewHolder extends RecyclerView.ViewHolder {
-        TextView staff_name;
+        TextView staff_name, staff_id;
         public StaffViewHolder(@NonNull View itemView) {
             super(itemView);
             staff_name = itemView.findViewById(R.id.staff_name);
+            staff_id = itemView.findViewById(R.id.staff_id);
 
             staff_name.setOnClickListener(new View.OnClickListener() {
                 @Override

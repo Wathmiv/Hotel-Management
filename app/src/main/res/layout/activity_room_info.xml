@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Room_info_Activity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Room_info_Activity"
     android:background="@drawable/background">
+    >
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,231 +51,256 @@
 
         </LinearLayout>
 
-        <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp">
-
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:gravity="left"
-            android:layout_gravity="center">
-
-            <LinearLayout
+            android:layout_height="match_parent">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_below="@+id/textView2"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="No. of rooms : "
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="left"
+                    android:layout_gravity="center">
 
-                <TextView
-                    android:id="@+id/numRooms"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="02"
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No. of rooms : "
+                            android:layout_margin="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Beds : "
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/numBeds"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="02"
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Baths : "
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/numBaths"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="02"
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Maximum guests : "
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/maxGuests"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="02"
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="AC/Non AC : "
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/isAC"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="AC"
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Price per Night: "
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/pricePerNight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="5000"
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Description : "
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="5000"
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Offers: "
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:id="@+id/offers"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="5000"
-                    android:layout_margin="5dp"
-                    android:textAlignment="center"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"/>
-            </LinearLayout>
+                        <TextView
+                            android:id="@+id/numRooms"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="02"
+                            android:layout_margin="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
 
 
-        </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Beds : "
+                            android:layout_margin="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
 
-    </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:id="@+id/numBeds"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="02"
+                            android:layout_margin="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Baths : "
+                            android:layout_margin="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
+
+                        <TextView
+                            android:id="@+id/numBaths"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="02"
+                            android:layout_margin="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Maximum guests : "
+                            android:layout_margin="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
+
+                        <TextView
+                            android:id="@+id/maxGuests"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="02"
+                            android:layout_margin="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="AC/Non AC : "
+                            android:layout_margin="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
+
+                        <TextView
+                            android:id="@+id/isAC"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="AC"
+                            android:layout_margin="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Price per Night: $"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
+
+                        <TextView
+                            android:id="@+id/pricePerNight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5000"
+                            android:layout_marginTop="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Description : "
+                            android:layout_margin="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
+
+                        <TextView
+                            android:id="@+id/description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5000"
+                            android:layout_margin="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Offers: "
+                            android:layout_margin="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
+
+                        <TextView
+                            android:id="@+id/offers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5000"
+                            android:layout_margin="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Photos: "
+                            android:layout_margin="5dp"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            android:textColor="@color/black"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/recyclerView"
+                            android:orientation="horizontal"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </ScrollView>
 
     </LinearLayout>
 
-
 </RelativeLayout>
+
